@@ -1,0 +1,16 @@
+{
+  "name" : "Solitare",
+  "players": {
+    "min" : 1,
+    "max" : 1
+  },
+  "accessories": [
+    {
+      "type" : "cards",
+      "options" :{
+        "type" : "52"
+      }
+    }
+  ],
+  "rules" : "Bladdy blah blah"
+}
