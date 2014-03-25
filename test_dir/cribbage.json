@@ -1,0 +1,43 @@
+{
+  "name" : "Cribbage",
+  "players" {
+    "min" : 2,
+    "max" : 6
+  },
+  "board": {
+    "rectangle" : {
+      "width" : 20,
+      "height" : 50,
+    },
+    "image": "template.png"
+  },
+  "accesories": {
+    "tokens" : [
+      {
+        "type" : "circle" 
+        "color": "red",
+        "count": 2,
+        "width": 1,
+        "height": 1
+     },
+     {
+       "type" : "circle"
+       "color": "green",
+       "count": 2,
+       "width": 1,
+       "height": 1
+     },
+     {
+       "type" : "circle"
+       "color": "blue",
+       "count": 2,
+       "width": 1,
+       "height": 1
+     },
+    ],
+    "cards" :{
+      "type" : "52"
+    }
+  },
+  "rules" : "Bladdy blah blah"
+}

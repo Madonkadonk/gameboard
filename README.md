@@ -1,0 +1,2 @@
+# gameboard
+### a Sails application
