@@ -8,7 +8,9 @@
     {
       "type" : "cards",
       "options" :{
-        "type" : "52"
+        "type" : "52",
+        "x" : 200,
+        "y" : 200
       }
     }
   ],

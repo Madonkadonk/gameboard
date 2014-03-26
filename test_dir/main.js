@@ -1,3 +1,20 @@
+move = function (old_index, new_index) {
+  while (old_index < 0) {
+    old_index += this.length;
+  }
+  while (new_index < 0) {
+    new_index += this.length;
+  }
+  if (new_index >= this.length) {
+    var k = new_index - this.length;
+    while ((k--) + 1) {
+      this.push(undefined);
+    }
+  }
+  this.splice(new_index, 0, this.splice(old_index, 1)[0]);
+  return this; // for testing purposes
+};
+
 function getParameterByName(name) {
   name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
   var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -10,7 +27,6 @@ namespace.accessories = [];
 $(document).ready(function(){
   var game_url = getParameterByName('game') + '.json'
   $.getJSON(game_url, function( dat ){
-    console.log(dat);
     var accessories_total = dat.accessories.length;
     var accessories_count = 0;
     function class_counter(){
@@ -20,11 +36,8 @@ $(document).ready(function(){
       }
     }
     for(var i in dat.accessories) {
-      console.log(dat.accessories[i]);
       var script_url = 'accessory_' + dat.accessories[i].type + '.js';
-      console.log(script_url);
       $.getScript(script_url, function(){
-        console.log('loaded ' + script_url);
         class_counter();
       });
     }
@@ -32,7 +45,7 @@ $(document).ready(function(){
 });
 
 function main(game_data){
-  var stage = new PIXI.Stage(0x66FF99);
+  var stage = new PIXI.Stage(0x66FF99, true);
 
   var renderer = PIXI.autoDetectRenderer($('#game_container').width(), $('#game_container').height());
 
@@ -49,6 +62,12 @@ function main(game_data){
         delete game_acc[j];
         break;
       }
+    }
+  }
+
+  for(var i in run_acc){
+    for(var j in run_acc[i].children){
+      stage.addChild(run_acc[i].children[j]);
     }
   }
 
